@@ -15,11 +15,11 @@
 					
 	<section class="entry-content" itemprop="text">
 		<a href="<?php the_permalink() ?>"><?php the_post_thumbnail('full'); ?></a>
-		<?php the_content('<button class="tiny">' . __( 'Read more...', 'lacrosse-3d' ) . '</button>'); ?>
+		<?php the_content('<button class="tiny">' . __( 'Read more...', 'trailhead' ) . '</button>'); ?>
 	</section> <!-- end article section -->
 						
 	<footer class="article-footer">
-    	<p class="tags"><?php the_tags('<span class="tags-title">' . __('Tags:', 'lacrosse-3d') . '</span> ', ', ', ''); ?></p>
+    	<p class="tags"><?php the_tags('<span class="tags-title">' . __('Tags:', 'trailhead') . '</span> ', ', ', ''); ?></p>
 	</footer> <!-- end article footer -->	
 				    						
 </article> <!-- end article -->

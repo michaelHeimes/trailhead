@@ -2,7 +2,7 @@
 /**
  * The off-canvas menu uses the Off-Canvas Component
  *
- * For more info: http://lacrosse-3d.com/docs/responsive-navigation/
+ * For more info: http://trailhead.com/docs/responsive-navigation/
  */
 ?>
 

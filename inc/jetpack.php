@@ -4,7 +4,7 @@
  *
  * @link https://jetpack.com/
  *
- * @package 3D_Lacrosse
+ * @package trailhead
  */
 
 /**
@@ -33,7 +33,7 @@ function lacrosse_3d_jetpack_setup() {
 		'jetpack-content-options',
 		array(
 			'post-details' => array(
-				'stylesheet' => 'lacrosse-3d-style',
+				'stylesheet' => 'trailhead-style',
 				'date'       => '.posted-on',
 				'categories' => '.cat-links',
 				'tags'       => '.tags-links',

@@ -2,11 +2,11 @@
 // Register menus
 register_nav_menus(
 	array(
-		'main-nav'		=> __( 'The Main Menu', 'lacrosse-3d' ),		// Main nav in header
-		'region-nav'		=> __( 'The Region Menu', 'lacrosse-3d' ),		// Utility nav in header
-		'offcanvas-nav'	=> __( 'The Off-Canvas Menu', 'lacrosse-3d' ),	// Off-Canvas nav
-		'footer-links'	=> __( 'Footer Links', 'lacrosse-3d' ),		// Secondary nav in footer
-		'social-links'	=> __( 'Social Links', 'lacrosse-3d' ),		// Secondary nav in footer	
+		'main-nav'		=> __( 'The Main Menu', 'trailhead' ),		// Main nav in header
+		'region-nav'		=> __( 'The Region Menu', 'trailhead' ),		// Utility nav in header
+		'offcanvas-nav'	=> __( 'The Off-Canvas Menu', 'trailhead' ),	// Off-Canvas nav
+		'footer-links'	=> __( 'Footer Links', 'trailhead' ),		// Secondary nav in footer
+		'social-links'	=> __( 'Social Links', 'trailhead' ),		// Secondary nav in footer	
 	)
 );
 

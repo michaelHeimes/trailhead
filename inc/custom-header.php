@@ -8,7 +8,7 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package 3D_Lacrosse
+ * @package trailhead
  */
 
 /**

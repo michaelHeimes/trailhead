@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package 3D_Lacrosse
+ * @package trailhead
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
@@ -24,9 +24,9 @@ function lacrosse_3d_setup() {
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
 		* If you're building a theme based on 3D Lacrosse, use a find and replace
-		* to change 'lacrosse-3d' to the name of your theme in all the template files.
+		* to change 'trailhead' to the name of your theme in all the template files.
 		*/
-	load_theme_textdomain( 'lacrosse-3d', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'trailhead', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -52,7 +52,7 @@ function lacrosse_3d_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	// register_nav_menus(
 	// 	array(
-	// 		'menu-1' => esc_html__( 'Primary', 'lacrosse-3d' ),
+	// 		'menu-1' => esc_html__( 'Primary', 'trailhead' ),
 	// 	)
 	// );
 
@@ -126,9 +126,9 @@ add_action( 'after_setup_theme', 'lacrosse_3d_content_width', 0 );
 function lacrosse_3d_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', 'lacrosse-3d' ),
+			'name'          => esc_html__( 'Sidebar', 'trailhead' ),
 			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'lacrosse-3d' ),
+			'description'   => esc_html__( 'Add widgets here.', 'trailhead' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -138,8 +138,8 @@ function lacrosse_3d_widgets_init() {
 	
 	register_sidebar(array(
 		'id' => 'offcanvas',
-		'name' => __('Offcanvas', 'lacrosse-3d'),
-		'description' => __('The offcanvas sidebar.', 'lacrosse-3d'),
+		'name' => __('Offcanvas', 'trailhead'),
+		'description' => __('The offcanvas sidebar.', 'trailhead'),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h4 class="widgettitle">',
@@ -154,14 +154,14 @@ add_action( 'widgets_init', 'lacrosse_3d_widgets_init' );
  * Enqueue scripts and styles.
  */
 function lacrosse_3d_scripts() {
-	wp_enqueue_style( 'lacrosse-3d-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'lacrosse-3d-style', 'rtl', 'replace' );
+	wp_enqueue_style( 'trailhead-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_style_add_data( 'trailhead-style', 'rtl', 'replace' );
 	
-	wp_enqueue_style( 'lacrosse-3d-style-min', get_template_directory_uri() . '/assets/styles/style.min.css', array(), _S_VERSION );
+	wp_enqueue_style( 'trailhead-style-min', get_template_directory_uri() . '/assets/styles/style.min.css', array(), _S_VERSION );
 	
 	wp_enqueue_script( 'app-js', get_template_directory_uri() . '/assets/scripts/app.min.js', array('jquery'), _S_VERSION, true );
 	
-	//wp_enqueue_script( 'lacrosse-3d-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	//wp_enqueue_script( 'trailhead-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

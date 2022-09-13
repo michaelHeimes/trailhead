@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package 3D_Lacrosse
+ * @package trailhead
  */
 
 ?>
@@ -26,7 +26,7 @@
 
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
-			<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'lacrosse-3d' ); ?></a>
+			<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'trailhead' ); ?></a>
 		
 			<div class="sticky-container">
 				<header class="site-header" role="banner" data-sticky data-margin-top="0" data-sticky-on="small">

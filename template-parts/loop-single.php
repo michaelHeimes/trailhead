@@ -17,8 +17,8 @@
 	</section> <!-- end article section -->
 						
 	<footer class="article-footer">
-		<?php wp_link_pages( array( 'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'lacrosse-3d' ), 'after'  => '</div>' ) ); ?>
-		<p class="tags"><?php the_tags('<span class="tags-title">' . __( 'Tags:', 'lacrosse-3d' ) . '</span> ', ', ', ''); ?></p>	
+		<?php wp_link_pages( array( 'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'trailhead' ), 'after'  => '</div>' ) ); ?>
+		<p class="tags"><?php the_tags('<span class="tags-title">' . __( 'Tags:', 'trailhead' ) . '</span> ', ', ', ''); ?></p>	
 	</footer> <!-- end article footer -->
 						
 	<?php comments_template(); ?>	

@@ -4,7 +4,7 @@
 /************* CUSTOMIZE ADMIN *******************/
 // Custom Backend Footer
 function lacrosse_3d_custom_admin_footer() {
-// 	_e('<span id="footer-thankyou">Developed by <a href="https://proprdesign.com/" target="_blank">Propr Design</a></span>.', 'lacrosse-3d');
+// 	_e('<span id="footer-thankyou">Developed by <a href="https://proprdesign.com/" target="_blank">Propr Design</a></span>.', 'trailhead');
 }
 
 // adding it to the admin area

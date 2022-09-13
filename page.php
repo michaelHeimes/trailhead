@@ -9,7 +9,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package 3D_Lacrosse
+ * @package trailhead
  */
 
 get_header();

@@ -19,21 +19,21 @@ function custom_post_example() {
 	register_post_type( 'custom_type', /* (http://codex.wordpress.org/Function_Reference/register_post_type) */
 	 	// let's now add all the options for this post type
 		array('labels' => array(
-			'name' => __('Custom Types', 'lacrosse-3d'), /* This is the Title of the Group */
-			'singular_name' => __('Custom Post', 'lacrosse-3d'), /* This is the individual type */
-			'all_items' => __('All Custom Posts', 'lacrosse-3d'), /* the all items menu item */
-			'add_new' => __('Add New', 'lacrosse-3d'), /* The add new menu item */
-			'add_new_item' => __('Add New Custom Type', 'lacrosse-3d'), /* Add New Display Title */
-			'edit' => __( 'Edit', 'lacrosse-3d' ), /* Edit Dialog */
-			'edit_item' => __('Edit Post Types', 'lacrosse-3d'), /* Edit Display Title */
-			'new_item' => __('New Post Type', 'lacrosse-3d'), /* New Display Title */
-			'view_item' => __('View Post Type', 'lacrosse-3d'), /* View Display Title */
-			'search_items' => __('Search Post Type', 'lacrosse-3d'), /* Search Custom Type Title */ 
-			'not_found' =>  __('Nothing found in the Database.', 'lacrosse-3d'), /* This displays if there are no entries yet */ 
-			'not_found_in_trash' => __('Nothing found in Trash', 'lacrosse-3d'), /* This displays if there is nothing in the trash */
+			'name' => __('Custom Types', 'trailhead'), /* This is the Title of the Group */
+			'singular_name' => __('Custom Post', 'trailhead'), /* This is the individual type */
+			'all_items' => __('All Custom Posts', 'trailhead'), /* the all items menu item */
+			'add_new' => __('Add New', 'trailhead'), /* The add new menu item */
+			'add_new_item' => __('Add New Custom Type', 'trailhead'), /* Add New Display Title */
+			'edit' => __( 'Edit', 'trailhead' ), /* Edit Dialog */
+			'edit_item' => __('Edit Post Types', 'trailhead'), /* Edit Display Title */
+			'new_item' => __('New Post Type', 'trailhead'), /* New Display Title */
+			'view_item' => __('View Post Type', 'trailhead'), /* View Display Title */
+			'search_items' => __('Search Post Type', 'trailhead'), /* Search Custom Type Title */ 
+			'not_found' =>  __('Nothing found in the Database.', 'trailhead'), /* This displays if there are no entries yet */ 
+			'not_found_in_trash' => __('Nothing found in Trash', 'trailhead'), /* This displays if there is nothing in the trash */
 			'parent_item_colon' => ''
 			), /* end of arrays */
-			'description' => __( 'This is the example custom post type', 'lacrosse-3d' ), /* Custom Type Description */
+			'description' => __( 'This is the example custom post type', 'trailhead' ), /* Custom Type Description */
 			'public' => true,
 			'publicly_queryable' => true,
 			'exclude_from_search' => false,
@@ -70,16 +70,16 @@ function custom_post_example() {
     	array('custom_type'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
     	array('hierarchical' => true,     /* if this is true, it acts like categories */             
     		'labels' => array(
-    			'name' => __( 'Custom Categories', 'lacrosse-3d' ), /* name of the custom taxonomy */
-    			'singular_name' => __( 'Custom Category', 'lacrosse-3d' ), /* single taxonomy name */
-    			'search_items' =>  __( 'Search Custom Categories', 'lacrosse-3d' ), /* search title for taxomony */
-    			'all_items' => __( 'All Custom Categories', 'lacrosse-3d' ), /* all title for taxonomies */
-    			'parent_item' => __( 'Parent Custom Category', 'lacrosse-3d' ), /* parent title for taxonomy */
-    			'parent_item_colon' => __( 'Parent Custom Category:', 'lacrosse-3d' ), /* parent taxonomy title */
-    			'edit_item' => __( 'Edit Custom Category', 'lacrosse-3d' ), /* edit custom taxonomy title */
-    			'update_item' => __( 'Update Custom Category', 'lacrosse-3d' ), /* update title for taxonomy */
-    			'add_new_item' => __( 'Add New Custom Category', 'lacrosse-3d' ), /* add new title for taxonomy */
-    			'new_item_name' => __( 'New Custom Category Name', 'lacrosse-3d' ) /* name title for taxonomy */
+    			'name' => __( 'Custom Categories', 'trailhead' ), /* name of the custom taxonomy */
+    			'singular_name' => __( 'Custom Category', 'trailhead' ), /* single taxonomy name */
+    			'search_items' =>  __( 'Search Custom Categories', 'trailhead' ), /* search title for taxomony */
+    			'all_items' => __( 'All Custom Categories', 'trailhead' ), /* all title for taxonomies */
+    			'parent_item' => __( 'Parent Custom Category', 'trailhead' ), /* parent title for taxonomy */
+    			'parent_item_colon' => __( 'Parent Custom Category:', 'trailhead' ), /* parent taxonomy title */
+    			'edit_item' => __( 'Edit Custom Category', 'trailhead' ), /* edit custom taxonomy title */
+    			'update_item' => __( 'Update Custom Category', 'trailhead' ), /* update title for taxonomy */
+    			'add_new_item' => __( 'Add New Custom Category', 'trailhead' ), /* add new title for taxonomy */
+    			'new_item_name' => __( 'New Custom Category Name', 'trailhead' ) /* name title for taxonomy */
     		),
     		'show_admin_column' => true, 
     		'show_ui' => true,
@@ -93,16 +93,16 @@ function custom_post_example() {
     	array('custom_type'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
     	array('hierarchical' => false,    /* if this is false, it acts like tags */                
     		'labels' => array(
-    			'name' => __( 'Custom Tags', 'lacrosse-3d' ), /* name of the custom taxonomy */
-    			'singular_name' => __( 'Custom Tag', 'lacrosse-3d' ), /* single taxonomy name */
-    			'search_items' =>  __( 'Search Custom Tags', 'lacrosse-3d' ), /* search title for taxomony */
-    			'all_items' => __( 'All Custom Tags', 'lacrosse-3d' ), /* all title for taxonomies */
-    			'parent_item' => __( 'Parent Custom Tag', 'lacrosse-3d' ), /* parent title for taxonomy */
-    			'parent_item_colon' => __( 'Parent Custom Tag:', 'lacrosse-3d' ), /* parent taxonomy title */
-    			'edit_item' => __( 'Edit Custom Tag', 'lacrosse-3d' ), /* edit custom taxonomy title */
-    			'update_item' => __( 'Update Custom Tag', 'lacrosse-3d' ), /* update title for taxonomy */
-    			'add_new_item' => __( 'Add New Custom Tag', 'lacrosse-3d' ), /* add new title for taxonomy */
-    			'new_item_name' => __( 'New Custom Tag Name', 'lacrosse-3d' ) /* name title for taxonomy */
+    			'name' => __( 'Custom Tags', 'trailhead' ), /* name of the custom taxonomy */
+    			'singular_name' => __( 'Custom Tag', 'trailhead' ), /* single taxonomy name */
+    			'search_items' =>  __( 'Search Custom Tags', 'trailhead' ), /* search title for taxomony */
+    			'all_items' => __( 'All Custom Tags', 'trailhead' ), /* all title for taxonomies */
+    			'parent_item' => __( 'Parent Custom Tag', 'trailhead' ), /* parent title for taxonomy */
+    			'parent_item_colon' => __( 'Parent Custom Tag:', 'trailhead' ), /* parent taxonomy title */
+    			'edit_item' => __( 'Edit Custom Tag', 'trailhead' ), /* edit custom taxonomy title */
+    			'update_item' => __( 'Update Custom Tag', 'trailhead' ), /* update title for taxonomy */
+    			'add_new_item' => __( 'Add New Custom Tag', 'trailhead' ), /* add new title for taxonomy */
+    			'new_item_name' => __( 'New Custom Tag Name', 'trailhead' ) /* name title for taxonomy */
     		),
     		'show_admin_column' => true,
     		'show_ui' => true,

@@ -15,7 +15,7 @@ function lacrosse_3d_related_posts() {
 		);
 		$related_posts = get_posts( $args );
 		if($related_posts) {
-		echo __( '<h4>Related Posts</h4>', 'lacrosse-3d' );
+		echo __( '<h4>Related Posts</h4>', 'trailhead' );
 		echo '<ul class="joints-related-posts">';
 			foreach ( $related_posts as $post ) : setup_postdata( $post ); ?>
 				<li class="related_post">

@@ -68,7 +68,7 @@ function lacrosse_3d_gallery_style($css) {
 function lacrosse_3d_excerpt_more($more) {
 	global $post;
 	// edit here if you like
-return '<a class="excerpt-read-more" href="'. get_permalink($post->ID) . '" title="'. __('Read', 'lacrosse-3d') . get_the_title($post->ID).'">'. __('... Read more &raquo;', 'lacrosse-3d') .'</a>';
+return '<a class="excerpt-read-more" href="'. get_permalink($post->ID) . '" title="'. __('Read', 'trailhead') . get_the_title($post->ID).'">'. __('... Read more &raquo;', 'trailhead') .'</a>';
 }
 
 //  Stop WordPress from using the sticky class (which conflicts with Foundation), and style WordPress sticky posts using the .wp-sticky class instead
@@ -90,7 +90,7 @@ function lacrosse_3d_get_the_author_posts_link() {
 	$link = sprintf(
 		'<a href="%1$s" title="%2$s" rel="author">%3$s</a>',
 		get_author_posts_url( $authordata->ID, $authordata->user_nicename ),
-		esc_attr( sprintf( __( 'Posts by %s', 'lacrosse-3d' ), get_the_author() ) ), // No further l10n needed, core will take care of this one
+		esc_attr( sprintf( __( 'Posts by %s', 'trailhead' ), get_the_author() ) ), // No further l10n needed, core will take care of this one
 		get_the_author()
 	);
 	return $link;
