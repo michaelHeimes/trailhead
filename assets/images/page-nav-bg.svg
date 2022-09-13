@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1113" height="93" viewBox="0 0 1113 93">
+  <defs>
+    <linearGradient id="linear-gradient" x1="1" y1="1" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#019fdb"/>
+      <stop offset="1"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.496" y1="0" x2="0.991" y2="0" xlink:href="#linear-gradient"/>
+    <filter id="Subtraction_1" x="0" y="0" width="1113" height="93" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_522" data-name="Group 522" transform="translate(-163 -499)">
+    <rect id="Rectangle_102" data-name="Rectangle 102" width="1053" height="60" rx="30" transform="translate(1247 562) rotate(180)" opacity="0.753" fill="url(#linear-gradient)"/>
+    <g transform="matrix(1, 0, 0, 1, 163, 499)" filter="url(#Subtraction_1)" style="mix-blend-mode: multiply;isolation: isolate">
+      <path id="Subtraction_1-2" data-name="Subtraction 1" d="M1053,33H0A32.973,32.973,0,0,1,33,0h987a32.973,32.973,0,0,1,33,33Z" transform="translate(1083 63) rotate(180)" opacity="0.407" fill="url(#linear-gradient-2)"/>
+    </g>
+  </g>
+</svg>
