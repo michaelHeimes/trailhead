@@ -10,7 +10,7 @@
 
 	<div class="inner">
 	
-		<?php lacrosse_3d_off_canvas_nav(); ?>
+		<?php trailhead_off_canvas_nav(); ?>
 				
 	</div>
 

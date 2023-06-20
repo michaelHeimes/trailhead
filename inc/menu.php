@@ -12,7 +12,7 @@ register_nav_menus(
 
 
 // The Top Menu
-function lacrosse_3d_top_nav() {
+function trailhead_top_nav() {
 	wp_nav_menu(array(
 		'container'			=> false,						// Remove nav container
 		'menu_id'			=> 'main-nav',					// Adding custom nav id
@@ -28,7 +28,7 @@ function lacrosse_3d_top_nav() {
 }
 
 // The Top Menu
-function lacrosse_3d_region_nav() {
+function trailhead_region_nav() {
 	wp_nav_menu(array(
 		'container'			=> false,						// Remove nav container
 		'menu_id'			=> 'region-nav',					// Adding custom nav id
@@ -52,7 +52,7 @@ class Topbar_Menu_Walker extends Walker_Nav_Menu {
 }
 
 // The Off Canvas Menu
-function lacrosse_3d_off_canvas_nav() {
+function trailhead_off_canvas_nav() {
 	wp_nav_menu(array(
 		'container'			=> false,							// Remove nav container
 		'menu_id'			=> 'offcanvas-nav',					// Adding custom nav id
@@ -73,7 +73,7 @@ class Off_Canvas_Menu_Walker extends Walker_Nav_Menu {
 }
 
 // The Footer Menu
-function lacrosse_3d_footer_links() {
+function trailhead_footer_links() {
 	wp_nav_menu(array(
 		'container'			=> 'false',				// Remove nav container
 		'menu_id'			=> 'footer-links',		// Adding custom nav id
@@ -85,7 +85,7 @@ function lacrosse_3d_footer_links() {
 } /* End Footer Menu */
 
 // The Social Links Menu
-function lacrosse_3d_social_links() {
+function trailhead_social_links() {
 	wp_nav_menu(array(
 		'container'			=> 'false',				// Remove nav container
 		'menu_id'			=> 'social-links',		// Adding custom nav id
@@ -97,7 +97,7 @@ function lacrosse_3d_social_links() {
 } /* End Social Links Menu */
 
 // Header Fallback Menu
-function lacrosse_3d_main_nav_fallback() {
+function trailhead_main_nav_fallback() {
 	wp_page_menu( array(
 		'show_home'		=> true,
 		'menu_class'	=> '',		// Adding custom nav class
@@ -110,7 +110,7 @@ function lacrosse_3d_main_nav_fallback() {
 }
 
 // Footer Fallback Menu
-function lacrosse_3d_footer_links_fallback() {
+function trailhead_footer_links_fallback() {
 	/* You can put a default here if you like */
 }
 
