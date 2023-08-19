@@ -2,7 +2,7 @@
 /**
  * The template part for displaying offcanvas content
  *
- * For more info: http://trailhead.com/docs/off-canvas-menu/
+ * For more info: https://jointswp.com/docs/off-canvas-menu/
  */
 ?>
 
