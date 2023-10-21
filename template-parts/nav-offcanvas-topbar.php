@@ -44,6 +44,7 @@
 		<div class="top-bar-right show-for-tablet">
 			<div class="grid-x align-right">
 				<div class="cell shrink">
+					<?php trailhead_top_nav();?>
 				</div>
 			</div>
 		</div>

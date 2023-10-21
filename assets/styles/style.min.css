@@ -4,7 +4,7 @@
 --------------------------------------------------------------*/
 /**
  * Foundation for Sites
- * Version 6.7.5
+ * Version 6.8.1
  * https://get.foundation
  * Licensed under MIT Open Source
  */
@@ -1006,22 +1006,22 @@ ul.no-bullet, ol.no-bullet {
     display: table-cell !important;
   }
   a,
-a:visited {
+  a:visited {
     text-decoration: underline;
   }
   a[href]:after {
     content: " (" attr(href) ")";
   }
   .ir a:after,
-a[href^="javascript:"]:after,
-a[href^="#"]:after {
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
     content: "";
   }
   abbr[title]:after {
     content: " (" attr(title) ")";
   }
   pre,
-blockquote {
+  blockquote {
     border: 1px solid #8a8a8a;
     page-break-inside: avoid;
   }
@@ -1029,7 +1029,7 @@ blockquote {
     display: table-header-group;
   }
   tr,
-img {
+  img {
     page-break-inside: avoid;
   }
   img {
@@ -1039,13 +1039,13 @@ img {
     margin: 0.5cm;
   }
   p,
-h2,
-h3 {
+  h2,
+  h3 {
     orphans: 3;
     widows: 3;
   }
   h2,
-h3 {
+  h3 {
     page-break-after: avoid;
   }
   .print-break-inside {
@@ -4189,8 +4189,8 @@ table.unstriped tbody tr {
     display: none;
   }
   table.stack tr,
-table.stack th,
-table.stack td {
+  table.stack th,
+  table.stack td {
     display: block;
   }
   table.stack td {
@@ -5163,7 +5163,7 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
         flex-wrap: wrap;
   }
   .top-bar.stacked-for-medium .top-bar-left,
-.top-bar.stacked-for-medium .top-bar-right {
+  .top-bar.stacked-for-medium .top-bar-right {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 100%;
             flex: 0 0 100%;
@@ -5176,7 +5176,7 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
         flex-wrap: wrap;
   }
   .top-bar.stacked-for-tablet .top-bar-left,
-.top-bar.stacked-for-tablet .top-bar-right {
+  .top-bar.stacked-for-tablet .top-bar-right {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 100%;
             flex: 0 0 100%;
@@ -5189,7 +5189,7 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
         flex-wrap: wrap;
   }
   .top-bar.stacked-for-large .top-bar-left,
-.top-bar.stacked-for-large .top-bar-right {
+  .top-bar.stacked-for-large .top-bar-right {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 100%;
             flex: 0 0 100%;
@@ -5787,13 +5787,13 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
 }
 @media screen and (orientation: landscape) {
   .show-for-landscape,
-.hide-for-portrait {
+  .hide-for-portrait {
     display: block !important;
   }
 }
 @media screen and (orientation: portrait) {
   .show-for-landscape,
-.hide-for-portrait {
+  .hide-for-portrait {
     display: none !important;
   }
 }
@@ -5804,13 +5804,13 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
 }
 @media screen and (orientation: landscape) {
   .hide-for-landscape,
-.show-for-portrait {
+  .show-for-portrait {
     display: none !important;
   }
 }
 @media screen and (orientation: portrait) {
   .hide-for-landscape,
-.show-for-portrait {
+  .show-for-portrait {
     display: block !important;
   }
 }
