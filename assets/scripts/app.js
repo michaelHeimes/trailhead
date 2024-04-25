@@ -28,6 +28,9 @@
 // JS Form Validation
 //@*prepros-prepend vendor/foundation/js/plugins/foundation.abide.js
 
+// Tabs UI
+//@*prepros-prepend vendor/foundation/js/plugins/foundation.tabs.js
+
 // Accordian
 //@*prepros-prepend vendor/foundation/js/plugins/foundation.accordion.js
 //@*prepros-prepend vendor/foundation/js/plugins/foundation.accordionMenu.js
@@ -66,9 +69,6 @@
 
 // Sticky Elements
 //@*prepros-prepend vendor/foundation/js/plugins/foundation.sticky.js
-
-// Tabs UI
-//@*prepros-prepend vendor/foundation/js/plugins/foundation.tabs.js
 
 // On/Off UI Switching
 //@*prepros-prepend vendor/foundation/js/plugins/foundation.toggler.js
