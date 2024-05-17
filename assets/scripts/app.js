@@ -47,7 +47,7 @@
 //@*prepros-prepend vendor/foundation/js/plugins/foundation.equalizer.js
 
 // Responsive Images
-//@prepros-prepend vendor/foundation/js/plugins/foundation.interchange.js
+//@*prepros-prepend vendor/foundation/js/plugins/foundation.interchange.js
 
 // Navigation Widget
 //@*prepros-prepend vendor/foundation/js/plugins/foundation.magellan.js

@@ -6,6 +6,11 @@
 --------------------------------------------------------------*/
 
 @import "foundation-settings";
+
+// Spacing Variables
+$smallGutter: map-get($grid-margin-gutters, "small");
+$mediumGutter: map-get($grid-margin-gutters, "medium");
+
 @import "mixins";
 @import "vendor/foundation/vendor/normalize";
 @import "vendor/foundation/foundation";
