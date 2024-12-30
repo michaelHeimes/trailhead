@@ -95,3 +95,6 @@ function trailhead_get_the_author_posts_link() {
 	);
 	return $link;
 }
+
+// Disable Image Scaling
+add_filter( 'big_image_size_threshold', '__return_false' );
