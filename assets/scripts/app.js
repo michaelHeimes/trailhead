@@ -124,6 +124,46 @@
         $('.display-on-load').css('visibility', 'visible');
     }
     
+    _app.scroll_to_anchor = function() {
+    
+        const offset = 0; // Adjust for sticky header, etc.
+    
+        // Scroll on page load if hash exists
+        const hash = window.location.hash;
+        if (hash) {
+            const target = document.querySelector(hash);
+            if (target) {
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+    
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    
+        // Smooth scroll on hash link clicks
+        document.querySelectorAll('a[href*="#"]:not([href="#"])').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetId = this.hash.slice(1);
+                const target = document.getElementById(targetId);
+    
+                if (target) {
+                    e.preventDefault();
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+    
+                    history.pushState(null, null, `#${targetId}`);
+                }
+            });
+        });
+    
+    }
+    
     // Custom Functions
     
     _app.mobile_takover_nav = function() {

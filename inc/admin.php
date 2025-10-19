@@ -100,3 +100,7 @@ add_filter('admin_footer_text', 'trailhead_custom_admin_footer');
 		
 	}
 	add_action('do_meta_boxes','relocate_revisions_metabox', 30);
+	
+	
+	// enable Gutenberg block line height 
+	add_theme_support( 'custom-line-height' );
