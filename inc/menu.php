@@ -113,30 +113,7 @@ add_filter( 'nav_menu_css_class', 'required_active_nav_class', 10, 2 );
 		
 		// var_dump($args);
 		
-		if ( $args->theme_location == 'region-nav') {
-		
-			// loop
-			foreach( $items as &$item ) {
-				
-				// vars
-				$icon = get_field('region_badge', $item);
-				$size = 'full';						
-				// append icon
-				if( $icon ) {
-					
-					$item->title = '<span class="icon-title-wrap grid-x flex-dir-column align-middle align-center"><span class="icon" aria-hidden="true"><img src="' . $icon['url'] . '" alt="' . $icon['alt'] . '"></span><span class="title">' . $item->title . '</span></span>';
-					
-				}
-				
-			}
-			
-						
-			// return
-			return $items;		
-			
-		}
-			
-		elseif ( $args->theme_location == 'social-links') {
+		if ( $args->theme_location == 'social-links') {
 			
 			// loop
 			foreach( $items as &$item ) {

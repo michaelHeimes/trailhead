@@ -49,13 +49,6 @@ function trailhead_setup() {
 	// Default thumbnail size
 	set_post_thumbnail_size(150, 150, true);
 
-	// This theme uses wp_nav_menu() in one location.
-	// register_nav_menus(
-	// 	array(
-	// 		'menu-1' => esc_html__( 'Primary', 'trailhead' ),
-	// 	)
-	// );
-
 	/*
 		* Switch default core markup for search form, comment form, and comments
 		* to output valid HTML5.
@@ -154,12 +147,21 @@ add_action( 'widgets_init', 'trailhead_widgets_init' );
  * Enqueue scripts and styles.
  */
 function trailhead_scripts() {
+
 	wp_enqueue_style( 'trailhead-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'trailhead-style', 'rtl', 'replace' );
 	
-	wp_enqueue_style( 'trailhead-style-min', get_template_directory_uri() . '/assets/styles/style.min.css', array(), _S_VERSION );
+	$manifest_file = get_stylesheet_directory() . '/dist/manifest.json';
 	
-	wp_enqueue_script( 'app-js', get_template_directory_uri() . '/assets/scripts/app.min.js', array('jquery'), _S_VERSION, true );
+	if (!file_exists($manifest_file)) {
+		return; // fallback or skip
+	}
+	
+	$manifest = json_decode(file_get_contents($manifest_file));
+	
+	// Enqueue bundle CSS/JS
+	wp_enqueue_style('bundle-css', get_template_directory_uri() . '/dist/css/' . $manifest->css, [], null);
+	wp_enqueue_script('bundle-js', get_template_directory_uri() . '/dist/js/' . $manifest->js, ['jquery'], null, true);
 	
 	//wp_enqueue_script( 'trailhead-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
@@ -224,6 +226,13 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+/**
+ * Load WooCommerce compatibility file.
+ */
+// if ( class_exists( 'WooCommerce' ) ) {
+	// require get_template_directory() . '/inc/woocommerce.php';
+// }
 
 
 
