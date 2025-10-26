@@ -1,0 +1,6 @@
+{
+  "js": "bundle.min.1.0.0.js",
+  "css": "bundle.min.1.0.0.css",
+  "adminJs": "admin.min.1.0.0.js",
+  "adminCss": "admin.min.1.0.0.css"
+}

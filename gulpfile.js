@@ -4,9 +4,8 @@
  */
 
 const gulp = require('gulp');
- const dartSass = require('sass');
-const gulpSass = require('gulp-sass')(dartSass); // call once
-const sass = gulpSass; // just assign it
+const dartSass = require('sass');
+const gulpSass = require('gulp-sass')(dartSass);
 const sourcemaps = require('gulp-sourcemaps');
 const cleanCSS = require('gulp-clean-css');
 const postcss = require('gulp-postcss');
@@ -15,12 +14,17 @@ const rename = require('gulp-rename');
 const terser = require('gulp-terser');
 const browserSync = require('browser-sync').create();
 const del = require('del');
-const replace = require('gulp-replace');
 const browserify = require('browserify');
 const babelify = require('babelify');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 const fs = require('fs');
+
+const packageJson = require('./package.json');
+const version = packageJson.version; // e.g., "1.0.0"
+const aliases = {
+  suffix: 'min' // you can replace this with a hash for content-based cache-busting
+};
 
 // Paths
 const paths = {
@@ -35,82 +39,89 @@ const paths = {
 	dest: 'dist/js/',
   },
   php: '**/*.php',
+  dist: 'dist'
 };
 
 /**
  * Clean dist folder
  */
 function cleanDist() {
-  return del(['dist']);
+  return del([paths.dist]);
 }
 
 /**
- * Sass Task
+ * Theme SCSS with versioned filename
  */
-function styles() {
-   return gulp.src('source/scss/style.scss')
+function stylesTheme() {
+   const filename = `bundle.${aliases.suffix}.${version}.css`;
+ 
+   return gulp.src(paths.scss.src)
 	 .pipe(sourcemaps.init())
-	 .pipe(gulpSass().on('error', gulpSass.logError))
+	 .pipe(gulpSass({
+	   includePaths: ['node_modules', 'node_modules/foundation-sites/scss']
+	 }).on('error', gulpSass.logError))
 	 .pipe(postcss([autoprefixer()]))
-	 .pipe(gulp.dest('dist/css'))
+	 .pipe(gulp.dest(paths.scss.dest)) // unminified
 	 .pipe(cleanCSS())
-	 .pipe(rename({ suffix: '.min' }))
+	 .pipe(rename(filename)) // minified + versioned
 	 .pipe(sourcemaps.write('.'))
-	 .pipe(gulp.dest('dist/css'))
+	 .pipe(gulp.dest(paths.scss.dest))
 	 .pipe(browserSync.stream());
  }
 
 /**
- * JavaScript Task (Browserify + Babel)
+ * Vendor SCSS (slow build)
  */
-function scripts() {
-  return browserify({
-	entries: [paths.js.src],
-	debug: true,
-	transform: [
-	  [
-		babelify,
-		{
-		  presets: ['@babel/preset-env'],
-		  sourceMaps: true,
-		  extensions: ['.js'],
-		},
-	  ],
-	],
-  })
-	.bundle()
-	.pipe(source('app.js'))
-	.pipe(buffer())
-	.pipe(gulp.dest(paths.js.dest))
-	.pipe(rename({ suffix: '.min' }))
-	.pipe(terser())
-	.pipe(gulp.dest(paths.js.dest))
-	.pipe(browserSync.stream());
+function stylesVendor() {
+  return gulp.src('source/scss/vendor/vendor.scss')
+	.pipe(sourcemaps.init())
+	.pipe(gulpSass({ includePaths: ['node_modules'] }).on('error', gulpSass.logError))
+	.pipe(postcss([autoprefixer()]))
+	.pipe(rename('vendor.css'))
+	.pipe(gulp.dest('source/scss/vendor'))
+	.pipe(cleanCSS())
+	.pipe(rename('vendor.min.css'))
+	.pipe(sourcemaps.write('.'))
+	.pipe(gulp.dest('source/scss/vendor'));
 }
 
 /**
- * Version bump in style.css
+ * JavaScript Task with versioned filename
  */
-function bumpVersion(done) {
-  const styleFile = 'style.css';
-  if (!fs.existsSync(styleFile)) return done();
+function scripts() {
+   const filename = `bundle.${aliases.suffix}.${version}.js`;
+ 
+   return browserify({ entries: [paths.js.src], debug: true, transform: [[babelify, { presets: ['@babel/preset-env'], sourceMaps: true, extensions: ['.js'] }]] })
+	 .bundle()
+	 .pipe(source('app.js'))
+	 .pipe(buffer())
+	 .pipe(gulp.dest(paths.js.dest)) // unminified
+	 .pipe(rename(filename)) // minified + versioned
+	 .pipe(terser())
+	 .pipe(gulp.dest(paths.js.dest))
+	 .pipe(browserSync.stream());
+ }
 
-  const pkg = JSON.parse(fs.readFileSync('package.json'));
-  const version = pkg.version;
-
-  gulp.src(styleFile)
-	.pipe(replace(/Version:\s*[0-9.]+/, `Version: ${version}`))
-	.pipe(gulp.dest('./'));
-
-  done();
-}
+/**
+ * Generate manifest.json for PHP
+ */
+function manifest(cb) {
+   const $manifest = {
+	 js: `bundle.${aliases.suffix}.${version}.js`,
+	 css: `bundle.${aliases.suffix}.${version}.css`,
+	 adminJs: `admin.${aliases.suffix}.${version}.js`,
+	 adminCss: `admin.${aliases.suffix}.${version}.css`,
+   };
+   fs.writeFileSync(`${paths.dist}/manifest.json`, JSON.stringify($manifest, null, 2));
+   cb();
+ }
 
 /**
  * BrowserSync Live Reload
  */
 function serve(done) {
   browserSync.init({
-	proxy: 'http://trailhead.local', // your local WP dev URL
+	proxy: 'http://trailhead.local',
 	open: false,
 	injectChanges: true,
   });
@@ -121,7 +132,8 @@ function serve(done) {
  * Watch Files
  */
 function watchFiles() {
-  gulp.watch(paths.scss.watch, styles);
+  gulp.watch(['source/scss/**/*.scss', '!source/scss/vendor/**/*.scss'], stylesTheme);
+  gulp.watch('source/scss/vendor/**/*.scss', stylesVendor);
   gulp.watch(paths.js.watch, scripts);
   gulp.watch(paths.php).on('change', browserSync.reload);
 }
@@ -129,15 +141,15 @@ function watchFiles() {
 /**
  * Build Task
  */
-const build = gulp.series(cleanDist, gulp.parallel(styles, scripts), bumpVersion);
+const build = gulp.series(cleanDist, gulp.parallel(stylesTheme, stylesVendor, scripts), manifest);
 const dev = gulp.series(build, watchFiles);
 
 // Export tasks
 exports.clean = cleanDist;
-exports.styles = styles;
+exports.stylesTheme = stylesTheme;
+exports.stylesVendor = stylesVendor;
 exports.scripts = scripts;
-exports.bumpVersion = bumpVersion;
-// exports.serve = serve;
+exports.manifest = manifest;
 exports.watch = watchFiles;
 exports.build = build;
 exports.default = dev;
