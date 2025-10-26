@@ -19,14 +19,10 @@
 									<?php 
 									$image = get_field('footer_logo', 'option');
 									if( !empty( $image ) ): ?>
-									<div class="top">
+									<div class="logo-wrap">
 										<img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
 									</div>
 									<?php endif; ?>
-									<div class="bottom">
-										<a href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
-									</div>
-									<?php endif; ?>	
 									<a href="<?php echo esc_url( __( 'https://wordpress.org/', '_s' ) ); ?>">
 										<?php
 										/* translators: %s: CMS name, i.e. WordPress. */
