@@ -1,6 +1,3 @@
-@import "foundation-sites/scss/vendor/normalize"; // ✅ correct path
-@import "foundation-sites/scss/foundation"; // ✅
-
 // Global styles
 @include foundation-global-styles;
 @include foundation-forms;

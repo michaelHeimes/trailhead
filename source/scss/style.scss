@@ -1,18 +1,25 @@
 @charset "UTF-8";
 
-//@import "variables";
-
-// 1. Your overrides before Foundation's settings (so they take effect)
 @import "foundation-settings";
+
+@import "foundation-sites/scss/vendor/normalize";
+@import "foundation-sites/scss/foundation";
+
+@import "vendor/vendor.min";
+
+
+@import "variables";
+
+
+
 
 // Spacing Variables
 $smallGutter: map-get($grid-margin-gutters, "small");
 $mediumGutter: map-get($grid-margin-gutters, "medium");
 
-@import "mixins";
+// @import "mixins";
 @import "variables";
 
-@import "vendor/vendor.min";
 
 /*--------------------------------------------------------------
 # Custom Styles
