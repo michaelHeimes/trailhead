@@ -147,29 +147,60 @@ add_action( 'widgets_init', 'trailhead_widgets_init' );
  * Enqueue scripts and styles.
  */
 function trailhead_scripts() {
+	 // 1. Enqueue default style.css (standard WP practice)
+	 wp_enqueue_style('trailhead-style', get_stylesheet_uri(), array(), _S_VERSION);
+	 wp_style_add_data('trailhead-style', 'rtl', 'replace');
+ 
+	 // 2. Locate and check for manifest
+	 $manifest_path = get_template_directory() . '/dist/manifest.json';
+	 
+	 // Only proceed if manifest exists to prevent PHP warnings
+	 if (!file_exists($manifest_path)) {
+		 return;
+	 }
+ 
+	 // 3. Securely decode manifest
+	 $manifest_content = file_get_contents($manifest_path);
+	 $manifest = json_decode($manifest_content, true); // decode as associative array
+ 
+	 if (!$manifest) {
+		 return;
+	 }
+ 
+	 // 4. Enqueue Compiled Assets
+	 // Pass 'null' for version because the filename itself is already versioned (e.g., bundle.min.1.0.0.css)
+	 if (isset($manifest['css'])) {
+		 wp_enqueue_style(
+			 'bundle-css', 
+			 get_template_directory_uri() . '/dist/css/' . $manifest['css'], 
+			 [], 
+			 null 
+		 );
+	 }
+ 
+	 if (isset($manifest['js'])) {
+		 wp_enqueue_script(
+			 'bundle-js', 
+			 get_template_directory_uri() . '/dist/js/' . $manifest['js'], 
+			 ['jquery'], 
+			 null, 
+			 true // Load in footer
+		 );
+ 
+		 // OPTIONAL: Localize script if you need to pass data from PHP to JS
+		 wp_localize_script('bundle-js', 'trailheadData', [
+			 'ajax_url' => admin_url('admin-ajax.php'),
+			 'nonce'    => wp_create_nonce('trailhead_nonce'),
+		 ]);
+	 }
+ 
+	 // 5. Standard WP functions
+	 if (is_singular() && comments_open() && get_option('thread_comments')) {
+		 wp_enqueue_script('comment-reply');
+	 }
+ }
+ add_action('wp_enqueue_scripts', 'trailhead_scripts');
 
-	wp_enqueue_style( 'trailhead-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'trailhead-style', 'rtl', 'replace' );
-	
-	$manifest_file = get_stylesheet_directory() . '/dist/manifest.json';
-	
-	if (!file_exists($manifest_file)) {
-		return; // fallback or skip
-	}
-	
-	$manifest = json_decode(file_get_contents($manifest_file));
-	
-	// Enqueue bundle CSS/JS
-	wp_enqueue_style('bundle-css', get_template_directory_uri() . '/dist/css/' . $manifest->css, [], null);
-	wp_enqueue_script('bundle-js', get_template_directory_uri() . '/dist/js/' . $manifest->js, ['jquery'], null, true);
-	
-	//wp_enqueue_script( 'trailhead-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-}
-add_action( 'wp_enqueue_scripts', 'trailhead_scripts' );
 
 
 /**

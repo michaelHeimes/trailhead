@@ -67,7 +67,9 @@ import 'foundation-sites/js/foundation.smoothScroll.js';
 // import 'foundation-sites/js/foundation.tooltip.js';
 
 // Swiper
-import 'swiper/swiper-bundle.min.js';
+import Swiper from 'swiper/bundle';
+import 'swiper/css/bundle';
+
 
 import $ from 'jquery';
 import 'foundation-sites';

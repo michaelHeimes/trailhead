@@ -43,81 +43,49 @@ Trailhead includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 # Trailhead Theme Build System
 
-This build system is designed for the **Trailhead WordPress Theme**, using **Foundation 6.9.0**, **Sass**, and **ES6 modules** compiled via **Browserify + Babel**. It handles SCSS compilation, JavaScript bundling, live reload, and version bumping.
+This modernized build system is designed for the Trailhead WordPress Theme. It utilizes Foundation 6.9.0, Dart Sass, and ESM/ES6 modules bundled via Esbuild for lightning-fast performance.
+
 
 ---
 
 ## Requirements
 
-- Node.js >= 18
-- npm or yarn
-- Gulp CLI installed globally:  
-  ```bash
-  npm install -g gulp
+Node.js: >= 18.0.0
+Package Manager: npm or yarn
+Gulp CLI: Installed globally (npm install -g gulp-cli)
   
   
   Directory Structure
   
   source/
   ├─ scss/
-  │  ├─ style.scss         # Main theme SCSS (fast compile)
-  │  ├─ vendor/
-  │  │  └─ vendor.scss     # Vendor SCSS (slow compile, run manually)
+  │  ├─ style.scss         # Entry point (Imports Foundation + Theme)
+  │  ├─ foundation-settings # Your Foundation variable overrides
+  │  └─ partials/          # Theme components (header, footer, etc.)
   ├─ js/
-  │  └─ app.js             # Theme JS entry point
+  │  └─ app.js             # Theme JS entry point (ESM imports)
   dist/
-  ├─ css/                  # Compiled CSS output
-  ├─ js/                   # Compiled JS output
+  ├─ css/                  # Compiled CSS (versioned filenames)
+  ├─ js/                   # Bundled JS (versioned filenames)
+  └─ manifest.json         # JSON map for WordPress enqueuing
+
   
   
   # Gulp Tasks - Trailhead Theme Build System
   
-  | Task Name           | Description                                                                 |
-  |--------------------|-----------------------------------------------------------------------------|
-  | `gulp build`        | Cleans `dist/`, compiles theme SCSS, vendor SCSS, bundles JS, bumps version |
-  | `gulp`              | Default task: runs `build`, then watches files with BrowserSync live reload |
-  | `gulp stylesTheme`  | Compiles theme SCSS (fast build) with autoprefixing and minification        |
-  | `gulp stylesVendor` | Compiles vendor SCSS (slow build) with autoprefixing and minification      |
-  | `gulp scripts`      | Bundles JS using Browserify + Babel; outputs `app.js` and `app.min.js`     |
-  | `gulp manifest`      | Generates `manifest.json` with versioned filenames.					     |
-  | `gulp clean`        | Deletes the `dist/` folder                                                  |
-  | `gulp watch`        | Watches SCSS, JS, and PHP files and triggers live reload (BrowserSync)     |
+  Task Name	Description
+  gulp	Default: Runs a fast build and starts BrowserSync + Watch.
+  gulp build	Production: Full clean, minification, autoprefixing, and version bumping.
+  gulp styles	Compiles SCSS. Fast in dev mode; minified in prod mode.
+  gulp scripts	Bundles JS using Esbuild.
+  gulp clean	Deletes the dist/ folder using rimraf.
+  gulp bumpWP	Updates Version: in root style.css to match package.json.
 
 
-					   ┌────────────┐
-					   │  clean     │
-					   │ (dist/)    │
-					   └─────┬──────┘
-							 │
-			 ┌───────────────┴────────────────┐
-			 │                                │
-	 ┌───────────────┐                ┌───────────────┐
-	 │ stylesTheme   │                │ stylesVendor  │
-	 │ (fast SCSS)   │                │ (slow SCSS)   │
-	 └───────────────┘                └───────────────┘
-			 │                                │
-			 └───────────────┬────────────────┘
-							 │
-					   ┌───────────────┐
-					   │   scripts     │
-					   │ (JS bundling) │
-					   └───────────────┘
-							 │
-					   ┌───────────────┐
-					   │   manifest   │
-					   └───────────────┘
-							 │
-					   ┌───────────────┐
-					   │   build       │
-					   │ (runs all)    │
-					   └─────┬─────────┘
-							 │
-					   ┌───────────────┐
-					   │   default     │
-					   │ (build + watch)│
-					   └─────┬─────────┘
-							 │
-					 ┌───────────────┐
-					 │    watch      │
-					 │ (live reload) │
-					 └───────────────┘
+Task Name	Description
+  gulp	Default: Runs a fast build and starts BrowserSync + Watch.
+  gulp build	Production: Full clean, minification, autoprefixing, and version bumping.
+  gulp styles	Compiles SCSS. Fast in dev mode; minified in prod mode.
+  gulp scripts	Bundles JS using Esbuild.
+  gulp clean	Deletes the dist/ folder using rimraf.
+  gulp bumpWP	Updates Version: in root style.css to match package.json.
