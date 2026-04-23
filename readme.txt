@@ -89,3 +89,8 @@ Task Name	Description
   gulp scripts	Bundles JS using Esbuild.
   gulp clean	Deletes the dist/ folder using rimraf.
   gulp bumpWP	Updates Version: in root style.css to match package.json.
+  
+  
+  🚀 Speed Optimization
+  Development Mode: gulp triggers isProd = false. This disables CSS minification and Autoprefixer to keep save times low.
+  Production Mode: gulp build triggers isProd = true. This enables full minification and compatibility prefixing for the live site.
